@@ -1,0 +1,212 @@
+{
+  "objectSelector": {
+    "newRegistration": "New registration",
+    "newRegistrationCopy": "New registration(Copy)",
+    "title": "What would you like to register?"
+  },
+  "confirm": "Confirm",
+
+  "importArea": {
+    "confirmArea": "Confirm Area",
+    "chooseArea": "Choose import area"
+  },
+  "yes": "Yes",
+  "no": "No",
+  "adminPage": {
+    "norwegian": "Norwegian",
+    "english": "English",
+    "downloadPage": {
+      "title": "Downloaded map groups",
+      "numberOfTiles": "Number of map tiles",
+      "downloaded": "Downloaded",
+      "holdOverText": "Hover over the links to preview the map tiles",
+      "showing": "Showing",
+      "mapTiles": "map tiles of",
+      "loadMore": "Load more",
+      "largeGroup": "This download group is using a lot of storage. can cause performance issues",
+      "delete": "Delete map storage",
+      "noDownloads": "No map downloaded"
+    },
+    "data": {
+      "cachedDataActionDelete": "Delete",
+      "cachedDataContent": "Imported objects and background-maps will be deleted",
+      "cachedDataTitle": "Cached data",
+      "imageImportActionOff": "Off",
+      "imageImportActionOn": "On",
+      "imageImportContent": "If there is poor reception after importing object, you may have chosen not to import images. When the device gets good reception the images can be loaded afterwards.",
+      "imageImportTitle": "Automatic image import"
+    },
+    "help": {
+      "tipsActionOff": "Off",
+      "tipsActionOn": "On",
+      "tipsContent": "Suggestions-boxes that describes how to use the app are automatically turned on.",
+      "tipsTitle": "Suggestions",
+      "usermanualContent": " ",
+      "usermanualTitle": "User manual"
+    },
+    "importedPage": {
+      "database": "Database",
+      "dbToolTip": "You can import registrations located in the database and get them displayed in the map.",
+      "fromDatabase": "From database",
+      "fromLocal": "From unit",
+      "importNew": "Import new objects",
+      "local": "Unit",
+      "localToolTip": "You can import SOSI files that you have downloaded and stored on your device."
+    },
+    "objectPage": {
+      "database": "Database",
+      "dbToolTip": "You can import registrations located in the database and get them displayed in the map.",
+      "hasUnPublished": "Some objects were not published in the previous session. If you want to publish these you have to try again.",
+      "importNew": "Import new objects",
+      "local": "Unit",
+      "localToolTip": "You can import SOSI files that you have downloaded and stored on your device.",
+      "publishAllObject": "Publish all objects",
+      "registerNewObject": "Register new object"
+    },
+    "table": {
+      "createdAt": "Added",
+      "modifiedAt": "Edited",
+      "dbButtonText": "From database",
+      "delete": "Delete",
+      "duplicate": "Duplicate",
+      "edit": "Edit",
+      "importTitle": "Imported objects",
+      "importTitleTooltip": "Choose import type",
+      "location": "Municipality",
+      "objectType": "Object type",
+      "openInMap": "Open in map",
+      "isPublished": "Is published",
+      "publishOne": "Publish",
+      "selectAll": "Select all",
+      "selectUnPublished": "Only show objects that are not published",
+      "status": "Accessibility",
+      "type": "Type"
+    },
+    "dataImport": "Data import",
+    "assist": "Help",
+    "importedObject": "Imported objects",
+    "map": "Map import",
+    "myObject": "Work in progress",
+    "title": "Administration",
+    "logout": "Log out"
+  },
+  "mapPage": {
+    "allImportObjects": "All objects are imported",
+    "already": "Available",
+    "applyFilter": "Open filter",
+    "currentStatus": "Accessibility",
+    "editedUnpublished": "Imported objects that have been edited but not published",
+    "imageLayer": "Norway in images",
+    "importGeneral": "Imported objects",
+    "importObjectForArea": "Import objects for this area",
+    "importYear": "Imported objects with update date from this year",
+    "info": "Show legend",
+    "newEditedPublished": "New or edited objects that have been published",
+    "newUnpublished": "New object that have not been published",
+    "notRated": "Not rated",
+    "notReady": "Not available",
+    "partialAlready": "Partly available",
+    "register": "Import objects",
+    "registerStatus": "Registration status",
+    "showObjectDesktop": "Show objects",
+    "showObjectsText": "Showing objects",
+    "topo4": "Typological map",
+    "topo4gray": "Typological shades of gray map",
+    "toolTip": {
+      "registration": "Start registration of a new object",
+      "chooseLayer": "Choose a map layer",
+      "downloadMap": "Download map layers that are currently on screen",
+      "currentPosition": "Show your current position"
+    }
+  },
+  "objectEditor": {
+    "approvePublishing": "Approve for publishing",
+    "validateInputs": "Do assessment"
+  },
+  "importObjects": {
+    "changeImportArea": "Change",
+    "chooseImportArea": "Choose",
+    "importAreaTitle": "Choose import area",
+    "importObjectsButton": "Import objects",
+    "chooseObjects": "Choose objects",
+    "includeImagesContent": "If you have poor reception, it may be an advantage not to include photos in the import. When the reception improves, they are downloaded automatically.",
+    "includeImagesTitle": "Include photos",
+    "infoText": "You can import registrations located in the database and get them displayed in the map.",
+    "objectChoosenText": "objects within the selected area will be added to the map.",
+    "recreationCheckbox": "Friluft",
+    "seatingGroupCheckbox": "Sittegruppe",
+    "urbanCheckbox": "Tettsted"
+  },
+  "select": "Select",
+  "searchInMap": "Search map",
+  "register": "Register",
+  "loginPage": {
+    "forgot_password": "Forgot password?",
+    "login": "Login",
+    "no_account": "No account yet?",
+    "password": "Password",
+    "remember_me": "Remember me",
+    "sign_up": "Register",
+    "username": "Username"
+  },
+  "importedObjects": "Objects published",
+  "importedObjectsYTD": "Objects published this year",
+  "newOrEditedObjects": "Objects awaiting publishing",
+  "invalidObjects": "Objects failed to publish",
+  "accessible": "Accessible",
+  "partlyAccessible": "Partially accessible",
+  "notAccessible": "Not accessible",
+  "notAssessed": "Not assessed",
+  "chooseView": "Select view",
+
+  "sidebar": {
+    "registration": "Registration",
+    "map": "Map",
+    "administration": "Administration"
+  },
+  "searchBar": {
+    "searchMap": "Search in map",
+    "noResults": "No results"
+  },
+  "editCard": {
+    "editObject": "Edit object",
+    "created": "Created",
+    "changed": "Changed",
+    "geometry": "Geometry",
+    "properties": "Properties",
+    "toolTip": {
+      "geometry": "Edit geometry for the chosen object",
+      "properties": "Edit properties for the chosen object",
+      "moveLayerBack": "Move the selected layer to back"
+    }
+  },
+  "editToolbar": {
+    "toolTip": {
+      "cancelChange": "Cancel changes",
+      "cancelCreate": "Cancel Creation",
+      "revertToLastChange": "Revert to last change",
+      "removeLastVertex": "Remove last vertex",
+      "snapping": "Turn snapping on or off",
+      "removeObject": "Remove object and object data",
+      "deleteRedraw": "Remove object and start drawing again",
+      "confirmChange": "Confirm changes",
+      "confirmGoToProperties": "Confirm object, go to properties",
+      "deletePoint": "Delete selected Vertex"
+    },
+    "dialog": {
+      "title": "Do you really want to delete this object?",
+      "alert": "Important! All relevant object data including accessibility properties will be deleted!",
+      "noDelete": "Don't delete",
+      "delete": "Delete"
+    }
+  },
+  "demoDescription": "Activate to transform the application into sandbox-mode. If active all changes will be temporary and limited to local storage.",
+  "demoActive": "Demo mode is activated",
+  "showMore": "Show more",
+  "showLess": "Show less",
+  "mapLayers": {
+    "topo4": "Typologically norgeskart",
+    "topo4gray": "Typologically gray tones",
+    "imageLayer": "Norway in pictures"
+  }
+}

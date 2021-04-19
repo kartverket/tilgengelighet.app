@@ -1,0 +1,20 @@
+version: "3.3"
+services:
+  react-app:
+    image: ulriknetpower/kartverket:app
+    container_name: kartverket-app
+    stdin_open: true
+    ports:
+      - "3000:3000"
+    networks:
+      - "mern-app"
+  api-server:
+    image: ulriknetpower/kartverket:server  
+    container_name: kartverket-server
+    ports:
+      - "9000:9000"
+    networks:
+      - "mern-app"
+networks:
+  mern-app:
+    driver: bridge

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Master/Edit tools/Snapping icon</title>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Master/Edit-tools/Snapping-icon">
+            <g id="Group-3">
+                <g id="↳-Icon-Copy">
+                    <g id="Outlined-/-Editor-/-linear_scale">
+                        <polygon id="Path" points="0 0 24 0 24 24 0 24"></polygon>
+                        <path d="M22.21,17 L14.29,17 C13.9,16.12 13.03,15.5 12,15.5 C10.97,15.5 10.1,16.12 9.71,17 L1.79,17 L1.79,19 C4.1889974,19 5.98824544,19 7.18774414,19 C7.74824544,19 8.5889974,19 9.71,19 C10.1,19.88 10.97,20.5 12,20.5 C13.03,20.5 13.9,19.88 14.29,19 L22.21,19 L22.21,17 Z" id="🔹-Icon-Color" fill="#FFFFFF"></path>
+                    </g>
+                </g>
+                <path d="M17.2825,4.29126187 L17.3725,4.38126187 C17.7625,4.77126187 17.7625,5.40126187 17.3725,5.79126187 L11.7925,11.3812619 C11.4025,11.7712619 10.7725,11.7712619 10.3825,11.3812619 L7.2925,8.29126187 C6.9025,7.90126187 6.9025,7.27126187 7.2925,6.88126187 L7.3825,6.79126187 C7.7725,6.40126187 8.4025,6.40126187 8.7925,6.79126187 L11.0925,9.09126187 L15.8725,4.30126187 C16.2525,3.90126187 16.8925,3.90126187 17.2825,4.29126187 L17.2825,4.29126187 Z" id="Path" fill="#FFFFFF"></path>
+            </g>
+        </g>
+    </g>
+</svg>

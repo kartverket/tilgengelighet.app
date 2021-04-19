@@ -1,0 +1,211 @@
+{
+  "objectSelector": {
+    "newRegistration": "Ny registrering",
+    "newRegistrationCopy": "Registrering (kopi)",
+    "title": "Hva vil du registrere?"
+  },
+  "confirm": "Bekreft",
+  "importArea": {
+    "confirmArea": "Bekreft område",
+    "chooseArea": "Velg område for import"
+  },
+  "yes": "Ja",
+  "no": "Nei",
+  "adminPage": {
+    "norwegian": "Norsk",
+    "english": "Engelsk",
+    "downloadPage": {
+      "title": "Nedlastet kart grupper",
+      "numberOfTiles": "antall kartbilder",
+      "downloaded": "Nedlastet",
+      "holdOverText": "Hold over lenkene for å forhåndsvise kartbildene",
+      "showing": "Viser",
+      "mapTiles": "kart bilder av",
+      "loadMore": "Last flere",
+      "largeGroup": "Denne kartgruppen bruker mye lagring. Kan skape treghet i applikasjon",
+      "delete": "Slett lagret kart",
+      "noDownloads": "Ingen kartlag nedlastet"
+    },
+    "data": {
+      "cachedDataActionDelete": "Slett",
+      "cachedDataContent": "Importerte objekter og bakgrunnskart vil bli slettet.",
+      "cachedDataTitle": "Mellomlagrede data",
+      "imageImportActionOff": "Av",
+      "imageImportActionOn": "På",
+      "imageImportContent": "Hvis det er dårlig dekning når du har importert objekter kan du ha valgt at bilder ikke skal importeres. Når enheten får god dekning igjen kan bildene lastes inn i etterkant.",
+      "imageImportTitle": "Automatisk bilde import"
+    },
+    "help": {
+      "tipsActionOff": "Av",
+      "tipsActionOn": "På",
+      "tipsContent": "Hjelpebokser for å forklare hvordan appen brukes er automatisk slått på.",
+      "tipsTitle": "Tips",
+      "usermanualContent": " ",
+      "usermanualTitle": "Brukermanual"
+    },
+    "importedPage": {
+      "database": "Database",
+      "dbToolTip": "Du kan importere registreringer som ligger i databasen og få de opp i kartet.",
+      "fromDatabase": "Fra database",
+      "fromLocal": "Fra enhet",
+      "importNew": "Importer nye objekter",
+      "local": "Enhet",
+      "localToolTip": "Du kan importere SOSI filer som du har lastet ned og lagret på din enhet."
+    },
+    "objectPage": {
+      "database": "Database",
+      "dbToolTip": "Du kan importere registreringer som ligger i databasen og få de opp i kartet.",
+      "hasUnPublished": "Noen objekter ble ikke publisert forrige økt. Hvis du ønsker å publisere disse må du prøve på ny.",
+      "importNew": "Importer nye objekter",
+      "local": "Enhet",
+      "localToolTip": "Du kan importere SOSI filer som du har lastet ned og lagret på din enhet.",
+      "publishAllObject": "Publiser alle objekter",
+      "registerNewObject": "Registrer nytt objekt"
+    },
+    "table": {
+      "createdAt": "Lagt til",
+      "modifiedAt": "Redigert",
+      "dbButtonText": "Fra database",
+      "delete": "Slett",
+      "duplicate": "Dupliser",
+      "edit": "Rediger",
+      "importTitle": "Importerte objekter",
+      "importTitleTooltip": "Velg import type",
+      "location": "Kommune",
+      "objectType": "Objekttype",
+      "openInMap": "Åpne i kart",
+      "isPublished": "Er publisert",
+      "publishOne": "Publiser",
+      "selectAll": "Velg alle",
+      "selectUnPublished": "Vis kun objekter som ikke er publisert",
+      "status": "Tilgjengelighet",
+      "type": "Type"
+    },
+    "dataImport": "Data import",
+    "assist": "Hjelp",
+    "importedObject": "Importerte objekter",
+    "map": "Kart import",
+    "myObject": "Under arbeid",
+    "title": "Administrering",
+    "logout": "Logg ut"
+  },
+  "mapPage": {
+    "allImportObjects": "Alle objekter er importert",
+    "already": "Tilgjengelig",
+    "applyFilter": "Åpne filter",
+    "currentStatus": "Tilgjengelighet",
+    "editedUnpublished": "Importerte objekter som er redigert men ikke publisert",
+    "imageLayer": "Norge i bilder",
+    "importGeneral": "Importerte objekter",
+    "importObjectForArea": "Importer objekter for dette område",
+    "importYear": "Importerte objekter med oppdateringsdato fra i år",
+    "info": "Vis tegnforklaring",
+    "newEditedPublished": "Nye eller redigerte objekter som er publisert",
+    "newUnpublished": "Nye objekter som ikke er publisert",
+    "notRated": "Ikke vurdert",
+    "notReady": "Ikke tilgjengelig",
+    "partialAlready": "Delvis tilgjengelig",
+    "register": "Importer objekter",
+    "registerStatus": "Registreringsstatus",
+    "showObjectDesktop": "Vis objekter",
+    "showObjectsText": "Viser objekter",
+    "topo4": "Typologisk norgeskart",
+    "topo4gray": "Typologisk gråtoner",
+    "toolTip": {
+      "registration": "Registrer nytt objekt",
+      "chooseLayer": "Velg et kartlag",
+      "downloadMap": "Last ned kart utsnitt som er i skjermen for bruk uten internett",
+      "currentPosition": "Vis din nåværende posisjon"
+    }
+  },
+  "objectEditor": {
+    "approvePublishing": "Godkjenn for publisering",
+    "validateInputs": "Sjekk vurdering"
+  },
+  "importObjects": {
+    "changeImportArea": "Endre",
+    "chooseImportArea": "Velg",
+    "importAreaTitle": "Velg område for import",
+    "importObjectsButton": "Importer objekter",
+    "chooseObjects": "Velg objekter",
+    "includeImagesContent": "Hvis du har dårlig dekning kan det være en fordel å ikke inkludere bilder i importen. Når dekningen blir bedre lastes de ned automatisk.",
+    "includeImagesTitle": "Inkluder bilder",
+    "infoText": "Du kan importere registreringer som ligger i databasen og få de opp i kartet.",
+    "objectChoosenText": "objekter innenfor valgt område vil bli lagt til i kartet.",
+    "recreationCheckbox": "Friluft",
+    "seatingGroupCheckbox": "Sittegruppe",
+    "urbanCheckbox": "Tettsted"
+  },
+  "select": "Velg",
+  "searchInMap": "Søk i kart",
+  "register": "Registrering",
+  "loginPage": {
+    "forgot_password": "Glemt passordet?",
+    "login": "Logg inn",
+    "no_account": "Har du ikke konto?",
+    "password": "Passord",
+    "remember_me": "Husk meg",
+    "sign_up": "Registrer deg",
+    "username": "Brukernavn"
+  },
+  "importedObjects": "Objekter publisert",
+  "importedObjectsYTD": "Objekter publisert i år",
+  "newOrEditedObjects": "Objekter venter på publisering",
+  "invalidObjects": "Objekter, feil ved publisering",
+  "accessible": "Tilgjengelig",
+  "partlyAccessible": "Delvis tilgjengelig",
+  "notAccessible": "Ikke tilgjengelig",
+  "notAssessed": "Ikke vurdert",
+  "chooseView": "Velg visning",
+  "sidebar": {
+    "registration": "Registrering",
+    "map": "Kart",
+    "administration": "Administrering"
+  },
+  "searchBar": {
+    "searchMap": "Søk i kart",
+    "noResults": "Ingen resultater"
+  },
+  "editCard": {
+    "editObject": "Rediger objekt",
+    "created": "Opprettet",
+    "changed": "Redigert",
+    "geometry": "Geometri",
+    "properties": "Egenskaper",
+    "toolTip": {
+      "geometry": "Rediger geometri for valgt objekt",
+      "properties": "Rediger egenskaper for valgt objekt",
+      "moveLayerBack": "Flytt det valgte objektet bakerst på kartet"
+    }
+  },
+  "editToolbar": {
+    "toolTip": {
+      "cancelChange": "Kanseller endringer",
+      "cancelCreate": "Kanseller opprettelse",
+      "revertToLastChange": "Reverter til forrige endring",
+      "removeLastVertex": "Fjern forrige punkt",
+      "snapping": "Skru snapping av og på",
+      "removeObject": "Slett objektet og all tilhørende data",
+      "deleteRedraw": "Slett objektet og start tegning på ny",
+      "confirmChange": "Fullfør endringer",
+      "confirmGoToProperties": "Fullfør endringer og gå til redigere egenskaper",
+      "deletePoint": "Slett valgt knytepunkt"
+    },
+    "dialog": {
+      "title": "Vil du virkelig slette dette objektet?",
+      "alert": "Viktig! All tilhørende data inkludert tilgjengelighets vurdering vil bli slettet!",
+      "noDelete": "Ikke slett",
+      "delete": "Slett"
+    }
+  },
+  "demoDescription": "Aktiver for å gjøre applikasjonen om til en lekekasse. Hvis aktiv vil alle endringer kun bli lagret lokalt og midlertidig.",
+  "demoActive": "Demo-modus er aktivert",
+  "showMore": "Vis mer",
+  "showLess": "Vis mindre",
+  "mapLayers": {
+    "topo4": "Typologisk norgeskart",
+    "topo4gray": "Typologisk gråtoner",
+    "imageLayer": "Norge i bilder"
+  }
+}
+

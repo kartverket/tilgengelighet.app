@@ -1,0 +1,88 @@
+@import '~bootstrap/scss/_functions';
+@import '~bootstrap/scss/_variables';
+@import '~bootstrap/scss/mixins/_breakpoints';
+
+.no-border {
+  border-bottom: none !important;
+
+  .Mui-checked {
+    color: #249446 !important;
+  }
+}
+
+.MuiPagination-root {
+  display: flex;
+  justify-content: flex-end;
+  padding: 5px;
+}
+
+td,
+th {
+  vertical-align: middle !important;
+
+  &.small-cell {
+    max-width: 40px !important;
+    padding-right: 0px !important;
+    text-align: right;
+
+    .Mui-checked {
+      color: #249446 !important;
+    }
+  }
+
+  &.action-cell {
+    padding-left: 0px !important;
+    text-align: right;
+
+    .more-button {
+      display: inline-block;
+    }
+
+    .warning-button {
+      display: inline-block;
+
+      .MuiSvgIcon-root {
+        color: #b00020;
+      }
+    }
+  }
+}
+
+td {
+  &:not(.action-cell):not(.small-cell) {
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+button:focus {
+  outline: none;
+}
+
+.MuiListItem-root {
+  justify-content: space-between;
+}
+
+.info-panel {
+  background-color: #fafafa;
+}
+
+.selected-row {
+  background-color: rgba($color: #2189d6, $alpha: 0.12);
+}
+
+tbody>tr:first-child {
+  @include media-breakpoint-up(lg) {
+    td {
+      border-top: 2px solid gray;
+    }
+  }
+}
+
+.select-unpublished-box {
+  @include media-breakpoint-down(lg) {
+    text-align: left !important;
+    font-weight: normal;
+  }
+}

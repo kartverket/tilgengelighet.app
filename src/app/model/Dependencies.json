@@ -1,0 +1,158 @@
+{
+  "FriluftTurvei": {
+    "plankeavstand": {
+      "dependsOn": "dekkemateriale",
+      "dependsOnValue": "Tre"
+    },
+    "antallTilstrekkelig": {
+      "dependsOn": "møteHvileplass",
+      "dependsOnValue": "Ja"
+    },
+    "ledelinjeKontrast": {
+      "dependsOn": "ledelinje",
+      "dependsOnValue": "Taktil,Visuell,Taktil og visuell"
+    },
+    "sperrebomTilgjengelig": {
+      "dependsOn": "sperrebom",
+      "dependsOnValue": "Ja"
+    }
+  },
+  "FriluftSkiløype": {
+    "sperrebomTilgjengelig": {
+      "dependsOn": "sperrebom",
+      "dependsOnValue": "Ja"
+    }
+  },
+  "FriluftHCparkering": {
+    "bredde": {
+      "dependsOn": "merket",
+      "dependsOnValue": "Ja"
+    },
+    "lengde": {
+      "dependsOn": "merket",
+      "dependsOnValue": "Ja"
+    },
+    "automatHøyde": {
+      "dependsOn": "avgift",
+      "dependsOnValue": "Ja"
+    },
+    "tilgjengeligAutomat": {
+      "dependsOn": "avgift",
+      "dependsOnValue": "Ja"
+    }
+  },
+  "FriluftFiskeplassBrygge": {
+    "plankeavstand": {
+      "dependsOn": "dekkeMateriale",
+      "dependsOnValue": "Tre"
+    },
+    "stoppkantHøyde": {
+      "dependsOn": "stoppkant",
+      "dependsOnValue": "Ja"
+    }
+  },
+  "TettstedHCparkering": {
+    "bredde": {
+      "dependsOn": "merket",
+      "dependsOnValue": "Ja"
+    },
+    "lengde": {
+      "dependsOn": "merket",
+      "dependsOnValue": "Ja"
+    },
+    "automatHøyde": {
+      "dependsOn": "avgift",
+      "dependsOnValue": "Ja"
+    },
+    "tilgjengeligAutomat": {
+      "dependsOn": "avgift",
+      "dependsOnValue": "Ja"
+    },
+    "brukbartBetjeningsareal": {
+      "dependsOn": "gatelangsParkering",
+      "dependsOnValue": "Ja"
+    },
+    "stigning": {
+      "dependsOn": "gatelangsParkering",
+      "dependsOnValue": "Ja"
+    },
+    "tryggOvergang": {
+      "dependsOn": "gatelangsParkering",
+      "dependsOnValue": "Ja"
+    }
+  },
+  "TettstedVei": {
+    "plankeavstand": {
+      "dependsOn": "dekkeMateriale",
+      "dependsOnValue": "Tre"
+    },
+    "nedsenk1": {
+      "dependsOn": "gatetype",
+      "dependsOnValue": "Gangfelt"
+    },
+    "nedsenk2": {
+      "dependsOn": "gatetype",
+      "dependsOnValue": "Gangfelt"
+    },
+    "lyssignal": {
+      "dependsOn": "gatetype",
+      "dependsOnValue": "Gangfelt"
+    },
+    "lydsignal": {
+      "dependsOn": "gatetype",
+      "dependsOnValue": "Gangfelt"
+    },
+    "ledelinjeKontrast": {
+      "dependsOn": "ledelinje",
+      "dependsOnValue": "Taktil,Visuell,Taktil og visuell"
+    }
+  },
+  "TettstedInngangBygg": {
+    "manøverknappHøyde": {
+      "dependsOn": "døråpner",
+      "dependsOnValue": "Halvautomatisk"
+    },
+    "ringeklokkeHøyde": {
+      "dependsOn": "ringeklokke",
+      "dependsOnValue": "Ja"
+    }
+  },
+  "FriluftToalett": {
+    "servantTilgjengelig": {
+      "dependsOn": "byggtype",
+      "dependsOnValue": "Toalett,Toalett/omkledning"
+    },
+    "wcTilgjengelig": {
+      "dependsOn": "byggtype",
+      "dependsOnValue": "Toalett,Toalett/omkledning"
+    },
+    "omkledningTilgjengelig": {
+      "dependsOn": "byggtype",
+      "dependsOnValue": "Toalett/omkledning,Omkledning"
+    },
+    "manøverknappHøyde": {
+      "dependsOn": "døråpner",
+      "dependsOnValue": "Halvautomatisk"
+    }
+  },
+  "rampe": {
+    "håndlistHøydeØvre": {
+      "dependsOn": "håndlist",
+      "dependsOnValue": "Høyre side,Venstre side,Begge sider"
+    },
+    "håndlistHøydeNedre": {
+      "dependsOn": "håndlist",
+      "dependsOnValue": "Høyre side,Venstre side,Begge sider"
+    }
+  },
+  "trapp": {
+    "rekkverkHøydeØvre": {
+      "dependsOn": "rekkverk",
+      "dependsOnValue": "Høyre side,Venstre side,Begge sider"
+    },
+    "rekkverkHøydeNedre": {
+      "dependsOn": "rekkverk",
+      "dependsOnValue": "Høyre side,Venstre side,Begge sider"
+    }
+  }
+}
