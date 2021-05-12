@@ -1,0 +1,487 @@
+{
+  "Sittegruppe": {
+    "utstikkBord": {
+      "min": 0,
+      "max": 100,
+      "type": "cm"
+    },
+    "høydeBord": {
+      "min": 0,
+      "max": 150,
+      "type": "cm"
+    },
+    "høydeBenk": {
+      "min": 20,
+      "max": 80,
+      "type": "cm"
+    },
+    "helning": {
+      "min": 0,
+      "max": 20,
+      "type": "grader"
+    },
+    "adkomstKant": {
+      "min": 0,
+      "max": 50,
+      "type": "cm"
+    }
+  },
+  "TettstedHCparkering": {
+    "automatHøyde": {
+      "min": 0,
+      "max": 200,
+      "type": "cm"
+    },
+    "stigning": {
+      "min": 0,
+      "max": 30,
+      "type": "grader"
+    },
+    "brukbartBetjeningsareal": {
+      "min": 0,
+      "max": 1000,
+      "type": "cm"
+    },
+    "lengde": {
+      "min": 0,
+      "max": 1000,
+      "type": "cm"
+    },
+    "bredde": {
+      "min": 0,
+      "max": 1000,
+      "type": "cm"
+    },
+    "avstandServicebygg": {
+      "min": 0,
+      "max": 1000,
+      "type": "m"
+    }
+  },
+  "TettstedVei": {
+    "trappBredde": {
+      "min": 50,
+      "max": 10000,
+      "type": "cm"
+    },
+    "nedsenk2": {
+      "min": 0,
+      "max": 20,
+      "type": "cm"
+    },
+    "nedsenk1": {
+      "min": 0,
+      "max": 20,
+      "type": "cm"
+    },
+    "tverrfall": {
+      "min": 0,
+      "max": 20,
+      "type": "grader"
+    },
+    "stigning": {
+      "min": 0,
+      "max": 30,
+      "type": "grader"
+    },
+    "bredde": {
+      "min": 40,
+      "max": 5000,
+      "type": "cm"
+    },
+    "plankeavstand": {
+      "min": 0,
+      "max": 50,
+      "type": "cm"
+    },
+    "rekkverkHøydeØvre": {
+      "min": 40,
+      "max": 150,
+      "type": "cm"
+    },
+    "rekkverkHøydeNedre": {
+      "min": 40,
+      "max": 150,
+      "type": "cm"
+    }
+  },
+  "TettstedInngangBygg": {
+    "rampeBredde": {
+      "min": 50,
+      "max": 1000,
+      "type": "cm"
+    },
+    "rampeTerskel": {
+      "min": 0,
+      "max": 50,
+      "type": "cm"
+    },
+    "rampeStigning": {
+      "min": 0,
+      "max": 20,
+      "type": "grader"
+    },
+    "rampeLengde": {
+      "min": 30,
+      "max": 100000,
+      "type": "cm"
+    },
+    "trappBredde": {
+      "min": 50,
+      "max": 10000,
+      "type": "cm"
+    },
+    "rekkverkHøydeØvre": {
+      "min": 40,
+      "max": 150,
+      "type": "cm"
+    },
+    "rekkverkHøydeNedre": {
+      "min": 40,
+      "max": 150,
+      "type": "cm"
+    },
+    "håndlistHøydeØvre": {
+      "min": 40,
+      "max": 150,
+      "type": "cm"
+    },
+    "håndlistHøydeNedre": {
+      "min": 40,
+      "max": 150,
+      "type": "cm"
+    },
+    "terskelHøyde": {
+      "min": 0,
+      "max": 50,
+      "type": "cm"
+    },
+    "breddeInngang": {
+      "min": 50,
+      "max": 1000,
+      "type": "cm"
+    },
+    "ringeklokkeHøyde": {
+      "min": 50,
+      "max": 180,
+      "type": "cm"
+    },
+    "manøverknappHøyde": {
+      "min": 50,
+      "max": 180,
+      "type": "cm"
+    },
+    "horisontalFelt": {
+      "min": 0,
+      "max": 10000,
+      "type": "cm"
+    },
+    "stigningAdkomstvei": {
+      "min": 0,
+      "max": 50,
+      "type": "grader"
+    },
+    "avstandHC": {
+      "min": 0,
+      "max": 300,
+      "type": "m"
+    },
+    "avstandVanligParkering": {
+      "min": 0,
+      "max": 300,
+      "type": "m"
+    }
+  },
+  "TettstedParkeringsområde": {
+    "antallUU": {
+      "min": 0,
+      "max": 20,
+      "type": ""
+    },
+    "kapasitetPersonbiler": {
+      "min": 1,
+      "max": 500,
+      "type": ""
+    }
+  },
+  "FriluftBaderampe": {
+    "rampeBredde": {
+      "min": 50,
+      "max": 1000,
+      "type": "cm"
+    },
+    "rampeTerskel": {
+      "min": 0,
+      "max": 50,
+      "type": "cm"
+    },
+    "rampeStigning": {
+      "min": 0,
+      "max": 20,
+      "type": "grader"
+    },
+    "rampeLengde": {
+      "min": 30,
+      "max": 100000,
+      "type": "cm"
+    },
+    "håndlistHøydeØvre": {
+      "min": 40,
+      "max": 150,
+      "type": "cm"
+    },
+    "håndlistHøydeNedre": {
+      "min": 40,
+      "max": 150,
+      "type": "cm"
+    }
+  },
+  "Friluftsområde": {
+    "naturbaseId": {
+      "min": 0,
+      "max": 9999
+    }
+  },
+  "FriluftGrillBålplass": {
+    "helning": {
+      "min": 0,
+      "max": 20,
+      "type": "grader"
+    }
+  },
+  "FriluftGapahuk": {
+    "rampeBredde": {
+      "min": 50,
+      "max": 1000,
+      "type": "cm"
+    },
+    "rampeTerskel": {
+      "min": 0,
+      "max": 50,
+      "type": "cm"
+    },
+    "rampeStigning": {
+      "min": 0,
+      "max": 20,
+      "type": "grader"
+    },
+    "rampeLengde": {
+      "min": 30,
+      "max": 100000,
+      "type": "cm"
+    },
+    "håndlistHøydeØvre": {
+      "min": 40,
+      "max": 150,
+      "type": "cm"
+    },
+    "håndlistHøydeNedre": {
+      "min": 40,
+      "max": 150,
+      "type": "cm"
+    },
+    "diameter": {
+      "min": 0,
+      "max": 1000,
+      "type": "cm"
+    },
+    "terskelhøyde": {
+      "min": 0,
+      "max": 50,
+      "type": "cm"
+    },
+    "høydeInngang": {
+      "min": 15,
+      "max": 300,
+      "type": "cm"
+    },
+    "breddeInngang": {
+      "min": 50,
+      "max": 1200,
+      "type": "cm"
+    },
+    "plankeavstand": {
+      "min": 0,
+      "max": 50,
+      "type": "cm"
+    }
+  },
+  "FriluftFiskeplassBrygge": {
+    "diameter": {
+      "min": 0,
+      "max": 1000,
+      "type": "cm"
+    },
+    "rampeBredde": {
+      "min": 50,
+      "max": 1000,
+      "type": "cm"
+    },
+    "rampeTerskel": {
+      "min": 0,
+      "max": 50,
+      "type": "cm"
+    },
+    "rampeStigning": {
+      "min": 0,
+      "max": 20,
+      "type": "grader"
+    },
+    "rampeLengde": {
+      "min": 30,
+      "max": 100000,
+      "type": "cm"
+    },
+    "håndlistHøydeØvre": {
+      "min": 40,
+      "max": 150,
+      "type": "cm"
+    },
+    "håndlistHøydeNedre": {
+      "min": 40,
+      "max": 150,
+      "type": "cm"
+    }
+  },
+  "FriluftToalett": {
+    "rampeBredde": {
+      "min": 50,
+      "max": 1000,
+      "type": "cm"
+    },
+    "rampeTerskel": {
+      "min": 0,
+      "max": 50,
+      "type": "cm"
+    },
+    "rampeStigning": {
+      "min": 0,
+      "max": 20,
+      "type": "grader"
+    },
+    "rampeLengde": {
+      "min": 30,
+      "max": 100000,
+      "type": "cm"
+    },
+    "håndlistHøydeØvre": {
+      "min": 40,
+      "max": 150,
+      "type": "cm"
+    },
+    "håndlistHøydeNedre": {
+      "min": 40,
+      "max": 150,
+      "type": "cm"
+    },
+    "trappBredde": {
+      "min": 50,
+      "max": 10000,
+      "type": "cm"
+    },
+    "diameter": {
+      "min": 0,
+      "max": 1000,
+      "type": "cm"
+    },
+    "terskelhøyde": {
+      "min": 0,
+      "max": 50,
+      "type": "cm"
+    },
+    "breddeInngang": {
+      "min": 50,
+      "max": 1200,
+      "type": "cm"
+    },
+    "horisontalFelt": {
+      "min": 0,
+      "max": 10000,
+      "type": "cm"
+    },
+    "manøverknappHøyde": {
+      "min": 50,
+      "max": 180,
+      "type": "cm"
+    }
+  },
+  "FriluftTurvei": {
+    "tverrfall": {
+      "min": 0,
+      "max": 20,
+      "type": "grader"
+    },
+    "stigning": {
+      "min": 0,
+      "max": 30,
+      "type": "grader"
+    },
+    "bredde": {
+      "min": 40,
+      "max": 5000,
+      "type": "cm"
+    },
+    "plankeavstand": {
+      "min": 0,
+      "max": 50,
+      "type": "cm"
+    }
+  },
+  "FriluftParkeringsområde": {
+    "antallUU": {
+      "min": 0,
+      "max": 20,
+      "type": ""
+    },
+    "kapasitetPersonbiler": {
+      "min": 1,
+      "max": 500,
+      "type": ""
+
+    }
+  },
+  "FriluftSkiløpye": {
+    "tverrfall": {
+      "min": 0,
+      "max": 20,
+      "type": "grader"
+    },
+    "stigning": {
+      "min": 0,
+      "max": 30,
+      "type": "grader"
+    },
+    "bredde": {
+      "min": 40,
+      "max": 5000,
+      "type": "cm"
+    },
+    "avstandHC": {
+      "min": 0,
+      "max": 1000,
+      "type": "m"
+    }
+  },
+  "FriluftHCparkering": {
+    "automatHøyde": {
+      "min": 0,
+      "max": 200,
+      "type": "cm"
+    },
+    "lengde": {
+      "min": 0,
+      "max": 1000,
+      "type": "cm"
+    },
+    "bredde": {
+      "min": 0,
+      "max": 1000,
+      "type": "cm"
+    },
+    "avstandFasilitet": {
+      "min": 0,
+      "max": 1000,
+      "type": "m"
+    }
+  }
+}

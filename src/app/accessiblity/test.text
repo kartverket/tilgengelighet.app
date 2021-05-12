@@ -1,0 +1,288 @@
+--####### set segmentlengde based on geometry-length
+UPDATE tilgjengelighettettsted.tettstedvei SET segmentlengde = st_length(geometri);
+--######################queries - tettsted, t_el_rulle#########################
+--tettstedvei--
+UPDATE tilgjengelighettettsted.tettstedvei
+SET tilgjengvurderingelrull ='Delvis tilgjengelig'
+WHERE bredde >= 140
+OR tverrfall <= 3
+OR gatetype = 'Gangfelt'
+AND (nedsenk1 <= 10 AND nedsenk2 <= 10));
+UPDATE tilgjengelighettettsted.tettstedvei
+SET tilgjengvurderingelrull ='Tilgjengelig'
+WHERE gatetype = 'Gangfelt'
+AND (bredde >= 180
+AND stigning <= 10
+AND tverrfall <= 1.9
+AND dekketilstand = 'Jevnt'
+AND nedsenk1 <= 2.5
+AND nedsenk2 <= 2.5)
+OR gatetype <> 'Gangfelt'
+AND (trapp = 'Nei'
+AND bredde >= 180
+AND stigning <= 10
+AND tverrfall <= 1.9
+AND dekketilstand = 'Jevnt'
+AND (plankeavstand <= 1 OR plankeavstand IS NULL));
+UPDATE tilgjengelighettettsted.tettstedvei
+SET tilgjengvurderingelrull = 'Ikke vurdert'
+WHERE gatetype IS NULL
+OR stigning IS NULL
+OR bredde IS NULL
+OR tverrfall IS NULL
+OR dekketilstand IS NULL
+OR gatetype = 'Gangfelt' AND (nedsenk1 IS NULL OR nedsenk2 IS NULL)
+OR (dekke = 'Tre' AND plankeavstand IS NULL);
+UPDATE tilgjengelighettettsted.tettstedvei
+SET tilgjengvurderingelrull = 'Ikke tilgjengelig'
+WHERE bredde < 140
+OR stigning > 10
+OR tverrfall > 3
+OR dekketilstand = 'Ujevnt'
+OR gatetype = 'Gangfelt' AND (nedsenk1 > 10 OR nedsenk2 > 10)
+OR dekke = 'Tre' AND plankeavstand > 1
+OR trapp = 'Ja');
+--tettstedinngangbygg--
+UPDATE tilgjengelighettettsted.tettstedinngangbygg
+SET tilgjengvurderingelrull = 'Delvis tilgjengelig'
+WHERE (dorapner = 'Halvautomatisk' AND manoverknapphoyde <= 130)
+OR dorapner = 'Manuell'
+OR terskelhoyde BETWEEN 2.6 AND 10
+OR (rampe = 'Ja' AND rampeterskel BETWEEN 2.6 AND 10));
+UPDATE tilgjengelighettettsted.tettstedinngangbygg
+SET tilgjengvurderingelrull = 'Tilgjengelig'
+WHERE (rampe = 'Nei'
+
+
+AND (((dorapner = 'Halvautomatisk' AND manoverknapphoyde BETWEEN 80 AND 120) 
+OR (dorapner = 'Automatisk'))
+
+
+AND breddeinngang >= 86
+AND terskelhoyde <= 2.5
+AND horisontalfelt >= 150
+AND stigningadkomstvei <= 10)
+OR rampe = 'Ja'
+AND ((rampebredde >= 90 AND rampestigning <= 10 AND rampeterskel <= 2.5)
+AND ((dorapner = 'Halvautomatisk' AND manoverknapphoyde BETWEEN 80 AND 120) OR (dorapner = 'Automatisk'))
+AND horisontalfelt >= 150
+AND breddeinngang >= 86
+AND terskelhoyde <= 2.5
+AND stigningadkomstvei <= 10));
+UPDATE tilgjengelighettettsted.tettstedinngangbygg
+SET tilgjengvurderingelrull = 'Ikke vurdert'
+WHERE rampe IS NULL
+OR rampe = 'Ja' AND (rampebredde IS NULL OR rampeterskel IS NULL OR rampestigning IS NULL)
+OR breddeinngang IS NULL
+OR dorapner IS NULL
+OR terskelhoyde IS NULL
+OR stigningadkomstvei IS NULL;
+UPDATE tilgjengelighettettsted.tettstedinngangbygg
+SET tilgjengvurderingelrull = 'Ikke tilgjengelig'
+WHERE breddeinngang < 86
+OR terskelhoyde > 10
+OR stigningadkomstvei > 10
+OR manoverknapphoyde > 130
+OR horisontalfelt < 150
+OR rampe = 'Ja' AND (rampebredde < 90 OR rampestigning > 10 OR rampeterskel > 10);
+--######################queries - tettsted, t_ma_rulle####################################
+--tettstedvei--
+UPDATE tilgjengelighettettsted.tettstedvei
+SET tilgjengvurderingrulleauto = 'Delvis tilgjengelig'
+WHERE bredde < 180
+OR stigning <= 4.9
+OR tverrfall <= 1.9;
+UPDATE tilgjengelighettettsted.tettstedvei
+SET tilgjengvurderingrulleauto = 'Tilgjengelig'
+WHERE gatetype = 'Gangfelt'
+AND (bredde >= 180
+AND stigning <= 3.8
+AND tverrfall <= 1.2
+AND dekketilstand = 'Jevnt'
+AND nedsenk1 <= 2.5
+AND nedsenk2 <= 2.5)
+OR gatetype <> 'Gangfelt'
+AND (bredde >= 180
+AND trapp = 'Nei'
+AND stigning <= 3.8
+AND tverrfall <= 1.2
+AND dekketilstand = 'Jevnt'
+AND (plankeavstand >= 1 OR plankeavstand IS NULL));
+UPDATE tilgjengelighettettsted.tettstedvei
+SET tilgjengvurderingrulleauto = 'Ikke vurdert'
+WHERE gatetype IS NULL
+OR bredde IS NULL
+OR stigning IS NULL
+OR tverrfall IS NULL
+OR dekketilstand IS NULL
+OR (dekke = 'tre' AND plankeavstand IS NULL)
+OR gatetype = 'Gangfelt' AND (nedsenk1 IS NULL OR nedsenk2 IS NULL);
+UPDATE tilgjengelighettettsted.tettstedvei
+SET tilgjengvurderingrulleauto = 'Ikke tilgjengelig'
+WHERE bredde < 140
+OR stigning > 4.9
+OR tverrfall > 1.9
+OR dekketilstand = 'Ujevnt'
+OR plankeavstand > 1
+OR trapp = 'Ja'
+OR gatetype = 'Gangfelt' AND (nedsenk1 > 2.5 OR nedsenk2 > 2.5);
+--t_parkeringsområde--
+UPDATE tilgjengelighettettsted.tettstedparkeringsomrade
+SET tilgjengvurderingrulleauto = 'Delvis tilgjengelig'
+WHERE (antalluu < round(0.05 * kapasitetpersonbiler) AND antalluu > 0);
+UPDATE tilgjengelighettettsted.tettstedparkeringsomrade
+SET tilgjengvurderingrulleauto = 'Tilgjengelig'
+WHERE (antalluu >= round(0.05 * kapasitetpersonbiler) AND antalluu > 0)
+AND dekketilstand = 'Jevnt';
+UPDATE tilgjengelighettettsted.tettstedparkeringsomrade
+SET tilgjengvurderingrulleauto = 'Ikke vurdert'
+WHERE antalluu IS NULL
+OR dekketilstand IS NULL;
+UPDATE tilgjengelighettettsted.tettstedparkeringsomrade
+SET tilgjengvurderingrulleauto = 'Ikke tilgjengelig'
+WHERE antalluu = 0
+OR dekketilstand = 'Ujevnt';
+--tettstedhcparkering--
+UPDATE tilgjengelighettettsted.tettstedhcparkering
+SET tilgjengvurderingrulleauto = 'Delvis tilgjengelig'
+WHERE (bredde + coalesce(brukbartbetjeningsareal,0) < 449) AND (bredde + coalesce(brukbartbetjeningsareal,0) >= 380)
+OR (lengde < 599 AND lengde >= 500);
+UPDATE tilgjengelighettettsted.tettstedhcparkering
+SET tilgjengvurderingrulleauto = 'Tilgjengelig'
+WHERE avgift = 'Ja'
+AND (tilgjengeligautomat = 'Ja'
+AND (bredde + coalesce(brukbartbetjeningsareal,0) >= 450)
+AND lengde >= 600
+AND skiltet = 'Ja'
+AND merket = 'Ja')
+OR avgift = 'Nei'
+AND (bredde + coalesce(brukbartbetjeningsareal,0) >= 450)
+AND lengde >= 600
+AND skiltet = 'Ja'
+AND merket = 'Ja';
+UPDATE tilgjengelighettettsted.tettstedhcparkering
+SET tilgjengvurderingrulleauto = 'Ikke vurdert'
+WHERE (avgift = 'Ja' AND tilgjengeligautomat IS NULL)
+OR skiltet IS NULL
+OR merket IS NULL
+OR bredde IS NULL
+OR lengde IS NULL;
+UPDATE tilgjengelighettettsted.tettstedhcparkering
+SET tilgjengvurderingrulleauto = 'Ikke tilgjengelig'
+WHERE (avgift = 'Ja' AND tilgjengeligautomat = 'Nei')
+OR (bredde + coalesce(brukbartbetjeningsareal,0) < 380)
+OR lengde < 500
+OR skiltet = 'Nei'
+OR merket = 'Nei';
+--tettstedhcparkering gatelangs--
+UPDATE tilgjengelighettettsted.tettstedhcparkering
+SET tilgjengvurderingrulleauto = 'Delvis tilgjengelig'
+WHERE gatelangsparkering = 'Ja'
+AND ((bredde + coalesce(brukbartbetjeningsareal,0) < 449) AND (bredde + coalesce(brukbartbetjeningsareal,0) >= 380)
+OR (lengde < 800 AND lengde >= 750));
+UPDATE tilgjengelighettettsted.tettstedhcparkering
+SET tilgjengvurderingrulleauto = 'Tilgjengelig'
+WHERE gatelangsparkering = 'Ja'
+AND avgift = 'Ja'
+AND (tilgjengeligautomat = 'Ja'
+AND (bredde + coalesce(brukbartbetjeningsareal,0) >= 450)
+AND lengde >= 800
+AND skiltet = 'Ja'
+AND merket = 'Ja')
+OR gatelangsparkering = 'Ja'
+AND avgift = 'Nei'
+AND (bredde + coalesce(brukbartbetjeningsareal,0) >= 450)
+AND lengde >= 800
+AND skiltet = 'Ja'
+AND merket = 'Ja';
+UPDATE tilgjengelighettettsted.tettstedhcparkering
+SET tilgjengvurderingrulleauto = 'Ikke vurdert'
+WHERE gatelangsparkering = 'Ja' 
+AND ((avgift = 'Ja' AND tilgjengeligautomat IS NULL)
+OR skiltet IS NULL
+OR merket IS NULL
+OR bredde IS NULL
+OR lengde IS NULL);
+UPDATE tilgjengelighettettsted.tettstedhcparkering
+SET tilgjengvurderingrulleauto = 'Ikke tilgjengelig'
+WHERE gatelangsparkering = 'Ja'
+AND ((avgift = 'Ja' AND tilgjengeligautomat = 'Nei')
+OR (bredde + coalesce(brukbartbetjeningsareal,0) < 380)
+OR lengde < 750
+OR skiltet = 'Nei'
+OR merket = 'Nei');
+--tettstedinngangbygg--
+UPDATE tilgjengelighettettsted.tettstedinngangbygg
+SET tilgjengvurderingrulleauto= 'Delvis tilgjengelig'
+WHERE ((avstandhc > avstandvanligparkering OR avstandhc > 50)
+OR avstandhc IS NULL
+OR dorapner = 'Manuell'
+OR (dorapner = 'Halvautomatisk' AND manoverknapphoyde <= 130)
+OR (stigningadkomstvei > 4.9 AND stigningadkomstvei <= 5.7))
+OR rampe = 'Ja'
+AND ((rampetilgjengelig = 'Delvis tilgjengelig')
+OR (rampestigning > 3.8 AND rampestigning <= 4.9));
+UPDATE tilgjengelighettettsted.tettstedinngangbygg
+SET tilgjengvurderingrulleauto = 'Tilgjengelig'
+WHERE (rampe = 'Nei'
+AND (((avstandhc <= avstandvanligparkering AND avstandhc <= 50) OR (avstandvanligparkering IS NULL AND avstandhc <= 50))
+AND breddeinngang >= 86
+AND terskelhoyde <= 2.5
+AND horisontalfelt >= 150
+AND stigningadkomstvei <= 4.9
+AND ((dorapner = 'Halvautomatisk' AND manoverknapphoyde BETWEEN 80 AND 120) OR (dorapner = 'Automatisk')))
+OR rampe = 'Ja'
+AND (rampetilgjengelig = 'Tilgjengelig'
+AND ((avstandhc <= avstandvanligparkering AND avstandhc <= 50) OR (avstandvanligparkering IS NULL AND avstandhc <= 50))
+AND ((dorapner = 'Halvautomatisk' AND manoverknapphoyde BETWEEN 80 AND 120) OR (dorapner = 'Automatisk'))
+AND breddeinngang >= 86
+AND terskelhoyde <= 2.5
+AND horisontalfelt >= 150
+AND stigningadkomstvei <= 4.9));
+UPDATE tilgjengelighettettsted.tettstedinngangbygg
+SET tilgjengvurderingrulleauto = 'Ikke vurdert'
+WHERE rampe IS NULL
+OR rampe = 'Ja' AND (rampetilgjengelig IS NULL OR rampebredde IS NULL OR rampeterskel IS NULL OR rampestigning IS NULL)
+OR breddeinngang IS NULL
+OR dorapner IS NULL
+OR terskelhoyde IS NULL
+OR stigningadkomstvei IS NULL;
+UPDATE tilgjengelighettettsted.tettstedinngangbygg
+SET tilgjengvurderingrulleauto = 'Ikke tilgjengelig'
+WHERE breddeinngang < 86
+OR terskelhoyde > 2.5
+OR horisontalfelt < 150
+OR stigningadkomstvei > 5.7
+OR manoverknapphoyde > 130
+OR rampe = 'Ja' AND (rampetilgjengelig = 'Ikke tilgjengelig' OR rampebredde < 90 OR rampestigning > 10 OR rampeterskel > 10);
+--tettstedsittegruppe/ hvilebenk--
+UPDATE tilgjengelighettettsted.tettstedsittegruppe
+SET tilgjengvurderingrulleauto= 'Delvis tilgjengelig'
+WHERE helning <= 4.9
+OR (hoydebord <67 OR hoydebord >75)
+OR utstikkbord < 50
+OR (hoydebenk <45 OR hoydebenk > 50 );
+UPDATE tilgjengelighettettsted.tettstedsittegruppe
+SET tilgjengvurderingrulleauto= 'Tilgjengelig'
+WHERE helning <= 2.9
+AND (hoydebord >= 67 AND hoydebord <= 75)
+AND utstikkbord >= 50
+AND (hoydebenk >=45 AND hoydebenk <= 50 )
+AND dekketilstand = 'Jevnt'
+AND adkomsttilgjengelig = 'Ja'
+AND dekke = 'Fast';
+UPDATE tilgjengelighettettsted.tettstedsittegruppe
+SET tilgjengvurderingrulleauto= 'Ikke vurdert'
+WHERE helning IS NULL
+OR dekketilstand IS NULL
+OR dekke IS NULL
+OR hoydebord IS NULL
+OR utstikkbord IS NULL
+OR hoydebenk IS NULL
+OR adkomsttilgjengelig IS NULL;
+UPDATE tilgjengelighettettsted.tettstedsittegruppe
+SET tilgjengvurderingrulleauto= 'Ikke tilgjengelig'
+WHERE helning > 4.9
+OR adkomsttilgjengelig = 'Nei'
+OR dekketilstand = 'Ujevnt'
+OR dekke = 'Løst';

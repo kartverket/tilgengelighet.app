@@ -1,0 +1,510 @@
+--####### set segmentlengde based on geometry-length
+UPDATE tilgjengelighetfriluft.friluftturvei SET segmentlengde = st_length(geometri);
+UPDATE tilgjengelighetfriluft.friluftskiloype SET segmentlengde = st_length(geometri);
+--###################### queries - friluft, t_el_rulle #########################
+--friluftturvei--
+UPDATE tilgjengelighetfriluft.friluftturvei
+SET tilgjengvurderingelrullestol = 'Delvis tilgjengelig'
+WHERE tverrfall <= 4.9
+OR bredde >= 130
+OR (motehvileplass = 'Ja' AND antalltilstrekkelig = 'Nei' AND bredde BETWEEN 120 AND 180);
+UPDATE tilgjengelighetfriluft.friluftturvei
+SET tilgjengvurderingelrullestol = 'Tilgjengelig'
+WHERE ((motehvileplass = 'Ja' AND antalltilstrekkelig = 'Ja')
+AND (sperrebom = 'Ja' AND sperrebomtilgjengelig = 'Ja' OR sperrebom = 'Nei')
+AND bredde >= 120
+AND tverrfall <= 2.9
+AND stigning <= 10
+AND dekketilstand = 'Jevnt'
+AND dekke = 'Fast'
+AND (plankeavstand <= 1 OR plankeavstand IS NULL))
+OR ((motehvileplass = 'Ja' AND antalltilstrekkelig = 'Nei' OR motehvileplass = 'Nei' OR motehvileplass IS NULL)
+AND (sperrebom = 'Ja' AND sperrebomtilgjengelig = 'Ja' OR sperrebom = 'Nei' OR sperrebom IS NULL)
+AND bredde >= 180
+AND tverrfall <= 2.9
+AND stigning <= 10
+AND dekketilstand = 'Jevnt'
+AND dekke = 'Fast'
+AND (plankeavstand <= 1 OR plankeavstand IS NULL));
+UPDATE tilgjengelighetfriluft.friluftturvei
+SET tilgjengvurderingelrullestol = 'Ikke vurdert'
+WHERE bredde IS NULL
+OR stigning IS NULL
+OR tverrfall IS NULL
+OR dekke IS NULL
+OR (dekke = 'Tre' AND plankeavstand IS NULL)
+OR dekketilstand IS NULL;
+UPDATE tilgjengelighetfriluft.friluftturvei
+SET tilgjengvurderingelrullestol = 'Ikke tilgjengelig'
+WHERE (bredde < 130
+OR (motehvileplass = 'Ja' AND antalltilstrekkelig = 'Nei' AND bredde < 120)
+OR stigning > 10
+OR tverrfall > 4.9
+OR dekketilstand = 'Ujevnt'
+OR dekke = 'Løst'
+OR plankeavstand > 1
+OR (sperrebom = 'Ja' AND sperrebomtilgjengelig = 'Nei'));
+--toalett/omkledning--
+UPDATE tilgjengelighetfriluft.frilufttoalett
+SET tilgjengvurderingelrullestol = 'Delvis tilgjengelig'
+WHERE (terskelhoyde BETWEEN 2.6 AND 10
+OR (byggtype IN ('Toalett/omkledning','Toalett') AND wctilgjengelig = 'Delvis tilgjengelig')
+OR (rampe = 'Ja' AND rampeterskel BETWEEN 2.6 AND 10));
+UPDATE tilgjengelighetfriluft.frilufttoalett
+SET tilgjengvurderingelrullestol = 'Tilgjengelig'
+WHERE (rampe = 'Nei'
+AND (byggtype = 'Toalett/omkledning'
+AND breddeinngang >= 86
+AND terskelhoyde <= 2.5
+AND horisontalfelt >= 150
+AND diameter >= 150
+AND omkledningtilgjengelig = 'Tilgjengelig'
+AND wctilgjengelig = 'Tilgjengelig')
+OR rampe = 'Nei'
+AND (byggtype = 'Toalett'
+AND breddeinngang >= 86
+AND terskelhoyde <= 2.5
+AND horisontalfelt >= 150
+AND diameter >= 150
+AND wctilgjengelig = 'Tilgjengelig')
+OR rampe = 'Nei'
+AND (byggtype = 'Omkledning'
+AND breddeinngang >= 86
+AND terskelhoyde <= 2.5
+AND horisontalfelt >= 150
+AND diameter >= 150
+AND omkledningtilgjengelig = 'Tilgjengelig')
+OR rampe = 'Ja'
+AND (rampestigning <= 10
+AND rampeterskel <= 2.5
+AND rampebredde >= 90
+AND byggtype = 'Toalett/omkledning'
+AND breddeinngang >= 86
+AND terskelhoyde <= 2.5
+AND horisontalfelt >= 150
+AND diameter >= 150
+AND (omkledningtilgjengelig = 'Tilgjengelig' OR omkledningtilgjengelig = 'Delvis tilgjengelig')
+AND wctilgjengelig = 'Tilgjengelig')
+OR rampe = 'Ja'
+AND (rampestigning <= 10
+AND rampeterskel <= 2.5
+AND rampebredde >= 90
+AND byggtype = 'Toalett'
+AND breddeinngang >= 86
+AND terskelhoyde <= 2.5
+AND horisontalfelt >= 150
+AND diameter >= 150
+AND wctilgjengelig = 'Tilgjengelig')
+OR rampe = 'Ja'
+AND (rampestigning <= 10
+AND rampeterskel <= 2.5
+AND rampebredde >= 90
+AND byggtype = 'Omkledning'
+AND breddeinngang >= 86
+AND terskelhoyde <= 2.5
+AND horisontalfelt >= 150
+AND diameter >= 150
+AND omkledningtilgjengelig = 'Tilgjengelig'));
+UPDATE tilgjengelighetfriluft.frilufttoalett
+SET tilgjengvurderingelrullestol = 'Ikke vurdert'
+WHERE breddeinngang IS NULL
+OR terskelhoyde IS NULL
+OR diameter IS NULL
+OR rampe IS NULL
+OR rampe = 'Ja' AND (rampestigning IS NULL OR rampeterskel IS NULL OR rampebredde IS NULL)
+OR (byggtype = 'Toalett' AND wctilgjengelig = 'Ikke vurdert');
+UPDATE tilgjengelighetfriluft.frilufttoalett
+SET tilgjengvurderingelrullestol = 'Ikke tilgjengelig'
+WHERE rampe = 'Ja' AND (rampestigning > 10 OR rampeterskel > 10 OR rampebredde < 90)
+OR breddeinngang < 86
+OR terskelhoyde > 10
+OR horisontalfelt < 150
+OR diameter < 150
+OR wctilgjengelig = 'Ikke tilgjengelig'
+OR omkledningtilgjengelig = 'Ikke tilgjengelig';
+--fiskeplass/brygge--
+UPDATE tilgjengelighetfriluft.friluftfiskeplassbrygge
+SET tilgjengvurderingelrullestol = 'Delvis tilgjengelig'
+WHERE rampe = 'Ja' AND (rampeterskel BETWEEN 2.6 AND 10);
+UPDATE tilgjengelighetfriluft.friluftfiskeplassbrygge
+SET  tilgjengvurderingelrullestol = 'Tilgjengelig'
+WHERE (rampe = 'Ja'
+AND (rampestigning <= 10
+AND rampeterskel <= 2.5
+AND rampebredde >= 90
+AND diameter >= 150
+AND (plankeavstand <= 1 OR plankeavstand IS NULL)
+AND stoppkanthoyde >= 10)
+OR rampe = 'Nei'
+AND (diameter >= 150
+AND (plankeavstand <= 1 OR plankeavstand IS NULL)
+AND stoppkanthoyde >= 10));
+UPDATE tilgjengelighetfriluft.friluftfiskeplassbrygge
+SET tilgjengvurderingelrullestol = 'Ikke vurdert'
+WHERE rampe = 'Ja' AND (rampestigning IS NULL OR rampeterskel IS NULL OR rampebredde IS NULL)
+OR diameter IS NULL
+OR (stoppkant = 'Ja' AND stoppkanthoyde IS NULL);
+UPDATE tilgjengelighetfriluft.friluftfiskeplassbrygge
+SET tilgjengvurderingelrullestol = 'Ikke tilgjengelig'
+WHERE diameter < 150
+OR plankeavstand > 1
+OR stoppkanthoyde < 10
+OR stoppkant = 'Nei'
+OR (rampe = 'Ja' AND (rampestigning > 10 OR rampeterskel > 10 OR rampebredde < 90));
+--gapahuk/ hytte--
+UPDATE tilgjengelighetfriluft.friluftgapahuk
+SET tilgjengvurderingelrullestol = 'Delvis tilgjengelig'
+WHERE (EXTRACT(YEAR FROM forstedatafangstdato)>= 2015
+OR EXTRACT(YEAR FROM datafangstdato)>= 2015)
+AND (rampe = 'Ja' AND (rampeterskel BETWEEN 2.6 AND 10)
+OR (terskelhoyde BETWEEN 2.6 AND 10));
+UPDATE tilgjengelighetfriluft.friluftgapahuk
+SET tilgjengvurderingelrullestol = 'Tilgjengelig'
+WHERE (EXTRACT(YEAR FROM forstedatafangstdato)>= 2015
+OR EXTRACT(YEAR FROM datafangstdato)>= 2015)
+AND (rampe = 'Ja'
+AND (rampestigning <= 10
+AND rampeterskel <= 2.5
+AND rampebredde >= 90
+AND breddeinngang >= 86
+AND diameter >= 150
+AND dekke = 'Fast'
+AND dekketilstand = 'Jevnt'
+AND terskelhoyde <= 2.5)
+OR rampe = 'Nei'
+AND (breddeinngang >= 86
+AND diameter >= 150
+AND dekke = 'Fast'
+AND dekketilstand = 'Jevnt'
+AND terskelhoyde <= 2.5));
+UPDATE tilgjengelighetfriluft.friluftgapahuk
+SET tilgjengvurderingelrullestol ='Ikke vurdert'
+WHERE (EXTRACT(YEAR FROM forstedatafangstdato)>= 2015
+OR EXTRACT(YEAR FROM datafangstdato)>= 2015)
+AND (rampe IS NULL
+OR rampe = 'Ja' AND (rampestigning IS NULL OR rampeterskel IS NULL OR rampebredde IS NULL)
+OR diameter IS NULL
+OR dekke IS NULL
+OR dekketilstand IS NULL
+OR terskelhoyde IS NULL);
+UPDATE tilgjengelighetfriluft.friluftgapahuk
+SET tilgjengvurderingelrullestol = 'Ikke tilgjengelig'
+WHERE (EXTRACT(YEAR FROM forstedatafangstdato)>= 2015
+OR EXTRACT(YEAR FROM datafangstdato)>= 2015)
+AND (breddeinngang < 86
+OR diameter < 150
+OR dekke = 'Løst'
+OR dekketilstand = 'Ujevnt'
+OR terskelhoyde > 10
+OR rampe = 'Ja' AND (rampestigning > 10 OR rampeterskel > 10 OR rampebredde < 90));
+--##################queries - friluft, t_man_rulle############################
+--friluftturvei--
+UPDATE tilgjengelighetfriluft.friluftturvei
+SET tilgjengvurderingrulleauto = 'Delvis tilgjengelig'
+WHERE stigning <= 4.9
+OR tverrfall <= 1.9
+OR bredde >= 140
+OR (motehvileplass = 'Ja' AND antalltilstrekkelig = 'Nei' AND bredde BETWEEN 120 AND 180);
+UPDATE tilgjengelighetfriluft.friluftturvei
+SET tilgjengvurderingrulleauto = 'Tilgjengelig'
+WHERE (motehvileplass = 'Ja' AND antalltilstrekkelig = 'Ja')
+AND (sperrebom = 'Ja' AND sperrebomtilgjengelig = 'Ja' OR sperrebom = 'Nei' OR sperrebom IS NULL)
+AND bredde >= 120
+AND tverrfall <= 2.9
+AND stigning <= 3.8
+AND dekketilstand = 'Jevnt'
+AND dekke = 'Fast'
+AND (plankeavstand <= 1 OR plankeavstand IS NULL)
+OR ((motehvileplass = 'Ja' AND antalltilstrekkelig = 'Nei' OR motehvileplass = 'Nei' OR motehvileplass = NULL)
+AND (sperrebom = 'Ja' AND sperrebomtilgjengelig = 'Ja' OR sperrebom = 'Nei' OR sperrebom IS NULL)
+AND bredde >= 180
+AND tverrfall <= 2.9
+AND stigning <= 3.8
+AND dekketilstand = 'Jevnt'
+AND dekke = 'Fast'
+AND (plankeavstand <= 1 OR plankeavstand IS NULL));
+UPDATE tilgjengelighetfriluft.friluftturvei
+SET tilgjengvurderingrulleauto = 'Ikke vurdert'
+WHERE bredde IS NULL
+OR stigning IS NULL
+OR tverrfall IS NULL
+OR dekke IS NULL
+OR dekketilstand IS NULL
+OR (dekke = 'Tre' AND plankeavstand IS NULL));
+UPDATE tilgjengelighetfriluft.friluftturvei
+SET tilgjengvurderingrulleauto = 'Ikke tilgjengelig'
+WHERE (motehvileplass = 'Ja' AND antalltilstrekkelig = 'Nei' AND bredde < 120)
+OR (sperrebom = 'Ja' AND sperrebomtilgjengelig = 'Nei')
+OR bredde < 140
+OR stigning > 4.9
+OR tverrfall > 4.9
+OR dekketilstand = 'Ujevnt'
+OR dekke = 'Løst'
+OR plankeavstand > 1);
+--parkeringsområde--
+UPDATE tilgjengelighetfriluft.friluftparkeringsomrade
+SET tilgjengvurderingrulleauto='Delvis tilgjengelig'
+WHERE (antalluu < round(0.05 * kapasitetpersonbiler) AND antalluu > 0);
+UPDATE tilgjengelighetfriluft.friluftparkeringsomrade
+SET tilgjengvurderingrulleauto='Tilgjengelig'
+WHERE (antalluu >= round(0.05 * kapasitetpersonbiler) AND antalluu > 0)
+AND dekke = 'Fast'
+AND dekketilstand = 'Jevnt';
+UPDATE tilgjengelighetfriluft.friluftparkeringsomrade
+SET tilgjengvurderingrulleauto='Ikke vurdert'
+WHERE antalluu IS NULL
+OR dekke IS NULL
+OR dekketilstand IS NULL;
+UPDATE tilgjengelighetfriluft.friluftparkeringsomrade
+SET tilgjengvurderingrulleauto='Ikke tilgjengelig'
+WHERE antalluu = 0
+OR dekke = 'Løst'
+OR dekketilstand = 'Ujevnt';
+--hc_parkering--
+UPDATE tilgjengelighetfriluft.frilufthcparkering
+SET tilgjengvurderingrulleauto = 'Delvis tilgjengelig'
+WHERE avgift = 'Ja'
+AND (automathoyde > 110 AND automathoyde <= 130)
+OR (bredde < 450 AND bredde >= 380)
+OR (lengde < 600 AND lengde >= 500);
+UPDATE tilgjengelighetfriluft.frilufthcparkering
+SET tilgjengvurderingrulleauto = 'Tilgjengelig'
+WHERE avgift = 'Ja'
+AND (tilgjengeligautomat = 'Ja'
+AND bredde >= 450
+AND lengde >= 600
+AND skiltet = 'Ja'
+AND merket = 'Ja')
+OR avgift = 'Nei'
+AND (bredde >= 450
+AND lengde >= 600
+AND skiltet = 'Ja'
+AND merket = 'Ja');
+UPDATE tilgjengelighetfriluft.frilufthcparkering
+SET tilgjengvurderingrulleauto = 'Ikke vurdert'
+WHERE avgift = 'Ja' AND tilgjengeligautomat IS NULL
+OR skiltet IS NULL
+OR bredde IS NULL
+OR lengde IS NULL;
+UPDATE tilgjengelighetfriluft.frilufthcparkering
+SET tilgjengvurderingrulleauto = 'Ikke tilgjengelig'
+WHERE avgift = 'Ja' AND tilgjengeligautomat = 'Nei'
+OR (bredde < 380
+OR lengde < 500
+OR skiltet = 'Nei'
+OR merket = 'Nei');
+--toalett/omkledning--
+UPDATE tilgjengelighetfriluft.frilufttoalett
+SET tilgjengvurderingrulleauto = 'Delvis tilgjengelig'
+WHERE (byggtype = 'Toalett/omkledning' AND wctilgjengelig = 'Delvis tilgjengelig')
+OR (byggtype = 'Toalett' AND wctilgjengelig = 'Delvis tilgjengelig')
+OR (rampe = 'Ja' AND rampetilgjengelig = 'Delvis tilgjengelig'));
+UPDATE tilgjengelighetfriluft.frilufttoalett
+SET tilgjengvurderingrulleauto='Tilgjengelig'
+WHERE (rampe = 'Nei'
+AND (byggtype = 'Toalett/omkledning'
+AND horisontalfelt >= 150
+AND breddeinngang >= 86
+AND terskelhoyde <= 2.5
+AND diameter >= 150
+AND omkledningtilgjengelig = 'Tilgjengelig'
+AND wctilgjengelig = 'Tilgjengelig')
+OR rampe = 'Nei'
+AND (byggtype = 'Toalett'
+AND horisontalfelt >= 150
+AND breddeinngang >= 86
+AND terskelhoyde <= 2.5
+AND diameter >= 150
+AND wctilgjengelig = 'Tilgjengelig')
+OR rampe = 'Nei'
+AND (byggtype = 'Omkledning'
+AND horisontalfelt >= 150
+AND breddeinngang >= 86
+AND terskelhoyde <= 2.5
+AND diameter >= 150
+AND omkledningtilgjengelig = 'Tilgjengelig')
+OR rampe = 'Ja'
+AND (rampetilgjengelig = 'Tilgjengelig'
+AND byggtype = 'Toalett/omkledning'
+AND horisontalfelt >= 150
+AND breddeinngang >= 86
+AND terskelhoyde <= 2.5
+AND diameter >= 150
+AND omkledningtilgjengelig = 'Tilgjengelig'
+AND wctilgjengelig = 'Tilgjengelig')
+OR rampe = 'Ja'
+AND (rampetilgjengelig = 'Tilgjengelig'
+AND byggtype = 'Toalett'
+AND horisontalfelt >= 150
+AND breddeinngang >= 86
+AND terskelhoyde <= 2.5
+AND diameter >= 150
+AND wctilgjengelig = 'Tilgjengelig')
+OR rampe = 'Ja'
+AND (rampetilgjengelig = 'Tilgjengelig'
+AND byggtype = 'Omkledning'
+AND horisontalfelt >= 150
+AND breddeinngang >= 86
+AND terskelhoyde <= 2.5
+AND diameter >= 150
+AND omkledningtilgjengelig = 'Tilgjengelig'));
+UPDATE tilgjengelighetfriluft.frilufttoalett
+SET tilgjengvurderingrulleauto='Ikke vurdert'
+WHERE (EXTRACT(YEAR FROM forstedatafangstdato)>= 2015
+OR EXTRACT(YEAR FROM datafangstdato)>= 2015)
+AND (breddeinngang IS NULL
+OR terskelhoyde IS NULL
+OR diameter IS NULL
+OR rampe IS NULL
+OR (rampe = 'Ja' AND rampetilgjengelig = 'Ikke vurdert'));
+UPDATE tilgjengelighetfriluft.frilufttoalett
+SET tilgjengvurderingrulleauto = 'Ikke tilgjengelig'
+WHERE (rampe = 'Ja' AND rampetilgjengelig = 'Ikke tilgjengelig')
+OR breddeinngang < 86
+OR terskelhoyde > 2.5
+OR rampebredde < 90
+OR diameter < 150
+OR horisontalfelt < 150
+OR wctilgjengelig = 'Ikke tilgjengelig'
+OR omkledningtilgjengelig = 'Ikke tilgjengelig';
+--fiskeplass--
+UPDATE tilgjengelighetfriluft.friluftfiskeplassbrygge
+SET tilgjengvurderingrulleauto= 'Delvis tilgjengelig'
+WHERE rampe = 'Ja' AND rampetilgjengelig = 'Delvis tilgjengelig';
+UPDATE tilgjengelighetfriluft.friluftfiskeplassbrygge
+SET tilgjengvurderingrulleauto= 'Tilgjengelig'
+WHERE (rampe = 'Ja' AND rampetilgjengelig = 'Tilgjengelig'
+AND (diameter >= 150
+AND (plankeavstand <= 1 OR plankeavstand IS NULL)
+AND stoppkanthoyde >= 10)
+OR rampe = 'Nei'
+AND (diameter >= 150
+AND (plankeavstand <= 1 OR plankeavstand IS NULL)
+AND stoppkanthoyde >= 10));
+UPDATE tilgjengelighetfriluft.friluftfiskeplassbrygge
+SET tilgjengvurderingrulleauto = 'Ikke vurdert'
+WHERE (rampe = 'Ja' AND rampetilgjengelig IS NULL)
+OR diameter IS NULL
+OR (stoppkant = 'Ja' AND stoppkanthoyde IS NULL)
+OR (dekke = 'Tre' AND plankeavstand IS NULL);
+UPDATE tilgjengelighetfriluft.friluftfiskeplassbrygge
+SET tilgjengvurderingrulleauto = 'Ikke tilgjengelig'
+WHERE (rampe = 'Ja' AND (rampetilgjengelig = 'Ikke tilgjengelig')
+OR (diameter < 150
+OR plankeavstand > 1
+OR stoppkanthoyde < 10
+OR stoppkant = 'Nei'));
+--baderampe--
+UPDATE tilgjengelighetfriluft.friluftbaderampe
+SET tilgjengvurderingrulleauto= 'Delvis tilgjengelig'
+WHERE (EXTRACT(YEAR FROM forstedatafangstdato)>= 2015
+OR EXTRACT(YEAR FROM datafangstdato)>= 2015)
+AND (rampe = 'Ja' AND (rampetilgjengelig = 'Delvis tilgjengelig') OR (rampestigning > 3.8 AND rampestigning <= 4.9));
+UPDATE tilgjengelighetfriluft.friluftbaderampe
+SET tilgjengvurderingrulleauto= 'Tilgjengelig'
+WHERE (EXTRACT(YEAR FROM forstedatafangstdato)>= 2015
+OR EXTRACT(YEAR FROM datafangstdato)>= 2015)
+AND ((rampe = 'Ja' AND rampetilgjengelig = 'Tilgjengelig')
+AND rampestigning <= 3.8
+AND rampebredde >= 90
+AND handlist IN ('Begge sider'));
+UPDATE tilgjengelighetfriluft.friluftbaderampe
+SET tilgjengvurderingrulleauto = 'Ikke vurdert'
+WHERE (EXTRACT(YEAR FROM forstedatafangstdato)>= 2015
+OR EXTRACT(YEAR FROM datafangstdato)>= 2015)
+AND (rampe IS NULL
+OR (rampe = 'Ja' AND rampetilgjengelig IS NULL)
+OR rampetilgjengelig = 'Ikke vurdert');
+UPDATE tilgjengelighetfriluft.friluftbaderampe
+SET tilgjengvurderingrulleauto = 'Ikke tilgjengelig'
+WHERE (EXTRACT(YEAR FROM forstedatafangstdato)>= 2015
+OR EXTRACT(YEAR FROM datafangstdato)>= 2015)
+AND (rampestigning > 4.9
+OR rampebredde < 90
+OR rampeterskel > 2.5
+OR (rampe = 'Ja' AND rampetilgjengelig = 'Ikke tilgjengelig'));
+--gapahuk/ hytte--
+UPDATE tilgjengelighetfriluft.friluftgapahuk
+SET tilgjengvurderingrulleauto= 'Delvis tilgjengelig'
+WHERE rampe = 'Ja' AND rampetilgjengelig = 'Delvis tilgjengelig';
+UPDATE tilgjengelighetfriluft.friluftgapahuk
+SET tilgjengvurderingrulleauto = 'Tilgjengelig'
+WHERE (rampe = 'Ja'
+AND (rampetilgjengelig = 'Tilgjengelig'
+AND breddeinngang >= 86
+AND diameter >= 150
+AND dekke = 'Fast'
+AND dekketilstand = 'Jevnt'
+AND terskelhoyde <= 2.5)
+OR rampe = 'Nei'
+AND (breddeinngang >= 86
+AND diameter >= 150
+AND dekke = 'Fast'
+AND dekketilstand = 'Jevnt'
+AND terskelhoyde <= 2.5));
+UPDATE tilgjengelighetfriluft.friluftgapahuk
+SET tilgjengvurderingrulleauto='Ikke vurdert'
+WHERE rampe IS NULL
+OR (rampe = 'Ja' AND (rampestigning IS NULL OR rampeterskel IS NULL OR rampebredde IS NULL OR rampetilgjengelig = 'Ikke vurdert')
+OR diameter IS NULL
+OR dekke IS NULL
+OR dekketilstand IS NULL
+OR terskelhoyde IS NULL);
+UPDATE tilgjengelighetfriluft.friluftgapahuk
+SET tilgjengvurderingrulleauto='Ikke tilgjengelig'
+WHERE (rampe = 'Ja' AND rampetilgjengelig = 'Ikke tilgjengelig')
+OR breddeinngang < 86
+OR diameter < 150
+OR dekke = 'Løst'
+OR dekketilstand = 'Ujevnt'
+OR terskelhoyde > 2.5;
+--grill/bållplass--
+UPDATE tilgjengelighetfriluft.friluftgrillbalplass
+SET tilgjengvurderingrulleauto= 'Delvis tilgjengelig'
+WHERE helning <= 4.9;
+UPDATE tilgjengelighetfriluft.friluftgrillbalplass
+SET tilgjengvurderingrulleauto= 'Tilgjengelig'
+WHERE helning <= 2.9
+AND dekketilstand = 'Jevnt'
+AND dekke = 'Fast';
+UPDATE tilgjengelighetfriluft.friluftgrillbalplass
+SET tilgjengvurderingrulleauto= 'Ikke vurdert'
+WHERE helning IS NULL
+OR dekke IS NULL
+OR dekketilstand IS NULL;
+UPDATE tilgjengelighetfriluft.friluftgrillbalplass
+SET tilgjengvurderingrulleauto= 'Ikke tilgjengelig'
+WHERE helning > 4.9
+OR dekketilstand = 'Ujevnt'
+OR dekke = 'Løst';
+--friluftsittegruppe/ hvilebenk--
+UPDATE tilgjengelighetfriluft.friluftsittegruppe
+SET tilgjengvurderingrulleauto= 'Delvis tilgjengelig'
+WHERE helning <= 4.9
+OR (hoydebord <67 OR hoydebord >75)
+OR utstikkbord < 50
+OR (hoydebenk <45 OR hoydebenk > 50 );
+UPDATE tilgjengelighetfriluft.friluftsittegruppe
+SET tilgjengvurderingrulleauto= 'Tilgjengelig'
+WHERE helning <= 2.9
+AND (hoydebord >= 67 AND hoydebord <= 75)
+AND utstikkbord >= 50
+AND (hoydebenk >=45 AND hoydebenk <= 50 )
+AND dekketilstand = 'Jevnt'
+AND adkomsttilgjengelig = 'Ja'
+AND dekke = 'Fast';
+UPDATE tilgjengelighetfriluft.friluftsittegruppe
+SET tilgjengvurderingrulleauto= 'Ikke vurdert'
+WHERE helning IS NULL
+OR dekketilstand IS NULL
+OR dekke IS NULL
+OR hoydebord IS NULL
+OR utstikkbord IS NULL
+OR hoydebenk IS NULL
+OR adkomsttilgjengelig IS NULL;
+UPDATE tilgjengelighetfriluft.friluftsittegruppe
+SET tilgjengvurderingrulleauto= 'Ikke tilgjengelig'
+WHERE helning > 4.9
+OR adkomsttilgjengelig = 'Nei'
+OR dekketilstand = 'Ujevnt'
+OR dekke = 'Løst';

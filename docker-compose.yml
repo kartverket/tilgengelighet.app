@@ -1,0 +1,28 @@
+version: "3.3"
+services:
+  react-app:
+    image: ulriknetpower/kartverket:app
+    container_name: kartverket-app
+    stdin_open: true
+    ports:
+      - "3000:3000"
+    networks:
+      - "mern-app"
+    environment:
+      - "REACT_APP_API_AUTH=(API username and password in base64 encoding)"
+      - "REACT_APP_API_ENDPOINT=https://openapi-stage.kartverket.no/v1/"
+      - "REACT_APP_API_DATASET_NAME=tilgjengelighet"
+  api-server:
+    image: ulriknetpower/kartverket:server  
+    container_name: kartverket-server
+    stdin_open: true
+    ports:
+      - "9000:9000"
+    networks:
+      - "mern-app"
+    environment:
+      - "FTP_USER=brukernavn"
+      - "FTP_PASS=passord"
+networks:
+  mern-app:
+    driver: bridge

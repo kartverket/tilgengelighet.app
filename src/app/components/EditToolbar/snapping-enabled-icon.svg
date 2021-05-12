@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Master/Edit tools/Snapping icon Copy 2</title>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Master/Edit-tools/Snapping-icon-Copy-2">
+            <g id="Master/Edit-tools/Snapping-icon" transform="translate(-3.000000, -3.000000)">
+                <g id="Group-3">
+                    <g id="↳-Icon-Copy" transform="translate(3.000000, 3.000000)">
+                        <g id="Outlined-/-Editor-/-linear_scale">
+                            <polygon id="Path" points="0 0 24 0 24 24 0 24"></polygon>
+                            <path d="M22.21,17 L14.29,17 C13.9,16.12 13.03,15.5 12,15.5 C10.97,15.5 10.1,16.12 9.71,17 L1.79,17 L1.79,19 C4.1889974,19 5.98824544,19 7.18774414,19 C7.74824544,19 8.5889974,19 9.71,19 C10.1,19.88 10.97,20.5 12,20.5 C13.03,20.5 13.9,19.88 14.29,19 L22.21,19 L22.21,17 Z" id="🔹-Icon-Color" fill="#84D5FE"></path>
+                        </g>
+                    </g>
+                    <path d="M21.603125,5.36407733 L21.715625,5.47657733 C22.203125,5.96407733 22.203125,6.75157733 21.715625,7.23907733 L14.740625,14.2265773 C14.253125,14.7140773 13.465625,14.7140773 12.978125,14.2265773 L9.115625,10.3640773 C8.628125,9.87657733 8.628125,9.08907733 9.115625,8.60157733 L9.228125,8.48907733 C9.715625,8.00157733 10.503125,8.00157733 10.990625,8.48907733 L13.865625,11.3640773 L19.840625,5.37657733 C20.315625,4.87657733 21.115625,4.87657733 21.603125,5.36407733 L21.603125,5.36407733 Z" id="Path" fill="#84D5FE"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

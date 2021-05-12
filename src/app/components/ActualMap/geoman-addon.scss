@@ -1,0 +1,64 @@
+.selected {
+  background-color: #fff;
+  border: 2px solid #1A589F;
+  border-radius: 50%;
+  margin: -8px 0 0 -8px !important;
+  width: 14px !important;
+  height: 14px !important;
+  outline: 0;
+  transition: opacity ease 0.3s;
+}
+
+.leaflet-zoom-animated {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.leaflet-control-scale-line {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.leaflet-control-attribution {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+@media (hover: none) and (pointer: coarse)  {
+  .marker-icon, .marker-icon:focus {
+    background-color: #fff !important;
+    border: 1px solid #3388ff;
+    border-radius: 50%;
+    margin: -12px 0 0 -12px !important;
+    width: 24.5px !important;
+    height: 24.5px !important;
+    outline: 0;
+    transition: opacity ease 0.3s;
+  }
+  .selected {
+    background-color: #fff !important;
+    border: 2px solid #1A589F;
+    border-radius: 50%;
+    margin: -11px 0 0 -11px !important;
+    width: 23px !important;
+    height: 23px !important;
+    outline: 0;
+    transition: opacity ease 0.3s;
+  }
+  .marker-icon-middle {
+    width: 18px !important;
+    height: 18px !important;
+    margin: -9px 0 0 -9px !important;
+  }
+}

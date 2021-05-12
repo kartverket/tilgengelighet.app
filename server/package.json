@@ -1,0 +1,21 @@
+{
+  "name": "kartverket-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "dotenv": "^9.0.2",
+    "express": "^4.17.1",
+    "express-fileupload": "^1.2.1",
+    "ftp": "^0.3.10",
+    "node-fetch": "^2.6.1",
+    "stream": "0.0.2"
+  }
+}

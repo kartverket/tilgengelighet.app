@@ -1,0 +1,15 @@
+@import '~bootstrap/scss/_functions';
+@import '~bootstrap/scss/_variables';
+@import '~bootstrap/scss/mixins/_breakpoints';
+
+.buttons-wrapper {
+  @include media-breakpoint-down(md) {
+    padding-left: 0;
+
+    button {
+      width: 100%;
+      margin-left: 0 !important;
+      margin-top: 10px;
+    }
+  }
+}
